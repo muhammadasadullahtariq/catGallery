@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, SafeAreaView, FlatList,Image} from 'react-native';
+import {View, StyleSheet, SafeAreaView, FlatList, Image} from 'react-native';
 import getBreeds from './src/api/getBreeds';
 import getCats from './src/api/getCats';
 import DropDownPicker from 'react-native-dropdown-picker';
+import Lightbox from 'react-native-lightbox';
 
 const App = () => {
   const [breeds, setBreeds] = useState([
@@ -10,7 +11,7 @@ const App = () => {
   ]);
   const [open, setOpen] = useState(false);
   const [cats, setCats] = useState([]);
-  const [selectedBreed, setSelectedBreed] = useState('bamb');
+  const [selectedBreed, setSelectedBreed] = useState('aege');
 
   useEffect(() => {
     (async () => {
@@ -48,8 +49,11 @@ const App = () => {
       />
       <FlatList
         data={cats}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
-          <Image source={{uri: item.url}} style={styles.image} />
+          <Lightbox>
+            <Image source={{uri: item.url}} style={styles.image} />
+          </Lightbox>
         )}
       />
     </SafeAreaView>
