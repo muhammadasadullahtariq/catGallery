@@ -7,3 +7,5 @@ const getBreeds = async () => {
     console.log(error);
   }
 };
+
+export default getBreeds;
