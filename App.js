@@ -1,5 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, SafeAreaView, FlatList, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  SafeAreaView,
+  FlatList,
+  Image,
+  LogBox,
+} from 'react-native';
 import getBreeds from './src/api/getBreeds';
 import getCats from './src/api/getCats';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -24,6 +31,7 @@ const App = () => {
       setCats(cats);
       console.log(cats);
     })();
+    LogBox.ignoreAllLogs(true);
   }, []);
 
   useEffect(() => {
